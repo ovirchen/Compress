@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/olga/compress/inc/compress.hpp
+cstdlib
+-
+iostream
+-
+boost/bind.hpp
+-
+boost/smart_ptr.hpp
+-
+boost/asio.hpp
+-
+boost/thread.hpp
+-
+
+/home/olga/compress/src/main.cpp
+../inc/compress.hpp
+/home/olga/compress/inc/compress.hpp
+

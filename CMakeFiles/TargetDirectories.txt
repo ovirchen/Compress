@@ -1,0 +1,3 @@
+/home/olga/compress/CMakeFiles/rebuild_cache.dir
+/home/olga/compress/CMakeFiles/compress.dir
+/home/olga/compress/CMakeFiles/edit_cache.dir
