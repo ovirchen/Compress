@@ -1,2 +1,2 @@
 #!/bin/sh
-./compress
+./compress 4000

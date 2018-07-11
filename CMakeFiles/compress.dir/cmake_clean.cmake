@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/compress.dir/src/main.cpp.o"
+  "CMakeFiles/compress.dir/src/parcer.cpp.o"
   "compress.pdb"
   "compress"
 )

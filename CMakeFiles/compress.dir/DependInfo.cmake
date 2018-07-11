@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/olga/compress/src/main.cpp" "/home/olga/compress/CMakeFiles/compress.dir/src/main.cpp.o"
+  "/home/olga/compress/src/parcer.cpp" "/home/olga/compress/CMakeFiles/compress.dir/src/parcer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

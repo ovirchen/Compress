@@ -24,3 +24,7 @@ boost/thread.hpp
 ../inc/compress.hpp
 /home/olga/compress/inc/compress.hpp
 
+/home/olga/compress/src/parcer.cpp
+../inc/compress.hpp
+/home/olga/compress/inc/compress.hpp
+

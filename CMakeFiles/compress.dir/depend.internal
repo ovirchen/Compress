@@ -4,3 +4,6 @@
 CMakeFiles/compress.dir/src/main.cpp.o
  /home/olga/compress/inc/compress.hpp
  /home/olga/compress/src/main.cpp
+CMakeFiles/compress.dir/src/parcer.cpp.o
+ /home/olga/compress/inc/compress.hpp
+ /home/olga/compress/src/parcer.cpp

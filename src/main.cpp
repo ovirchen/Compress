@@ -1,25 +1,22 @@
 #include "../inc/compress.hpp"
 
-using boost::asio::ip::tcp;
-const int max_length = 1024;
-typedef boost::shared_ptr<tcp::socket> socket_ptr;
-
 void session(socket_ptr sock)
 {
 	try
 	{
-		for (;;)
+		while (1)
 		{
-			char data[max_length];
+			char buf[BUFFER_SIZE];
 
 			boost::system::error_code error;
-			size_t length = sock->read_some(boost::asio::buffer(data), error);
+			size_t length = sock->read_some(boost::asio::buffer(buf), error);
 			if (error == boost::asio::error::eof)
 				break; // Connection closed cleanly by peer.
 			else if (error)
 				throw boost::system::system_error(error); // Some other error.
 
-			boost::asio::write(*sock, boost::asio::buffer(data, length));
+			boost::asio::write(*sock, boost::asio::buffer(buf, length));
+            parcer(buf, length, sock);
 		}
 	}
 	catch (std::exception& e)
@@ -28,85 +25,28 @@ void session(socket_ptr sock)
 	}
 }
 
-void server(boost::asio::io_service& io_service, short port)
-{
-	tcp::acceptor a(io_service, tcp::endpoint(tcp::v4(), port));
-	for (;;)
-	{
-		socket_ptr sock(new tcp::socket(io_service));
-		a.accept(*sock);
-		boost::thread t(boost::bind(session, sock));
-	}
-}
-
-int main()
+int main(int ac, char** av)
 {
 	try
 	{
-		boost::asio::io_service io_service;
-		server(io_service, 4000);
+		if (ac != 2)
+		{
+			cerr << "Usage: ./compress <port>\n";
+			return 1;
+		}
+		boost::asio::io_service service;
+		tcp::endpoint ep(tcp::v4(), atoi(av[1]));
+		tcp::acceptor ac(service, ep);
+		while (1) {
+			socket_ptr sock(new tcp::socket(service));
+			ac.accept(*sock);
+			boost::thread thrd(boost::bind(session, sock));
+		}
 	}
-	catch (std::exception& e)
+	catch (exception &e)
 	{
-		std::cerr << "Exception: " << e.what() << "\n";
+		cerr << "Exception: " << e.what() << "\n";
 	}
 
 	return 0;
 }
-
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <sys/types.h>
-//#include <sys/socket.h>
-//#include <netinet/in.h>
-//#include <unistd.h>
-//
-//#define BUFFER_SIZE 1024
-//#define on_error(...) { fprintf(stderr, __VA_ARGS__); fflush(stderr); exit(1); }
-//
-//int main (int argc, char *argv[]) {
-//	if (argc < 2) on_error("Usage: %s [port]\n", argv[0]);
-//
-//	int port = atoi(argv[1]);
-//
-//	int server_fd, client_fd, err;
-//	struct sockaddr_in server, client;
-//	char buf[BUFFER_SIZE];
-//
-//	server_fd = socket(AF_INET, SOCK_STREAM, 0);
-//	if (server_fd < 0) on_error("Could not create socket\n");
-//
-//	server.sin_family = AF_INET;
-//	server.sin_port = htons(port);
-//	server.sin_addr.s_addr = htonl(INADDR_ANY);
-//
-//	int opt_val = 1;
-//	setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt_val, sizeof opt_val);
-//
-//	err = bind(server_fd, (struct sockaddr *) &server, sizeof(server));
-//	if (err < 0) on_error("Could not bind socket\n");
-//
-//	err = listen(server_fd, 128);
-//	if (err < 0) on_error("Could not listen on socket\n");
-//
-//	printf("Server is listening on %d\n", port);
-//
-//	while (1) {
-//		socklen_t client_len = sizeof(client);
-//		client_fd = accept(server_fd, (struct sockaddr *) &client, &client_len);
-//
-//		if (client_fd < 0) on_error("Could not establish new connection\n");
-//
-//		while (1) {
-//			int read = recv(client_fd, buf, BUFFER_SIZE, 0);
-//
-//			if (!read) break; // done reading
-//			if (read < 0) on_error("Client read failed\n");
-//
-//			err = send(client_fd, buf, read, 0);
-//			if (err < 0) on_error("Client write failed\n");
-//		}
-//	}
-//
-//	return 0;
-//}
