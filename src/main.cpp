@@ -15,7 +15,7 @@ void session(socket_ptr sock)
 			else if (error)
 				throw boost::system::system_error(error); // Some other error.
 
-			boost::asio::write(*sock, boost::asio::buffer(buf, length));
+//			boost::asio::write(*sock, boost::asio::buffer(buf, length));
             parcer(buf, length, sock);
 		}
 	}
