@@ -1,5 +1,10 @@
 #include "../inc/compress.hpp"
 
+unsigned long int g_tbs  = 0;
+unsigned long int g_tbr = 0;
+unsigned long int g_before_comp = 0;
+unsigned long int g_after_comp = 0;
+
 void session(socket_ptr sock)
 {
 	try
