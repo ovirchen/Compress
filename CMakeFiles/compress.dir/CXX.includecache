@@ -6,7 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/home/olga/compress/inc/compress.hpp
+/home/olga/compress/src/Server.cpp
+Server.hpp
+/home/olga/compress/src/Server.hpp
+stdlib.h
+-
+
+/home/olga/compress/src/main.cpp
+compress.hpp
+/home/olga/compress/src/compress.hpp
+Server.hpp
+/home/olga/compress/src/Server.hpp
+
+/home/olga/compress/src/response.cpp
+compress.hpp
+/home/olga/compress/src/compress.hpp
+
+inc/Server.hpp
+compress.hpp
+inc/compress.hpp
+
+inc/compress.hpp
 cstdlib
 -
 iostream
@@ -19,12 +39,4 @@ boost/asio.hpp
 -
 boost/thread.hpp
 -
-
-/home/olga/compress/src/main.cpp
-../inc/compress.hpp
-/home/olga/compress/inc/compress.hpp
-
-/home/olga/compress/src/parcer.cpp
-../inc/compress.hpp
-/home/olga/compress/inc/compress.hpp
 

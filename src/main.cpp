@@ -1,11 +1,7 @@
-#include "../inc/compress.hpp"
+#include "compress.hpp"
+#include "Server.hpp"
 
-unsigned long int g_tbs  = 0;
-unsigned long int g_tbr = 0;
-unsigned long int g_before_comp = 0;
-unsigned long int g_after_comp = 0;
-
-void session(socket_ptr sock)
+void session(socket_ptr sock, Server &serv)
 {
 	try
 	{
@@ -15,18 +11,18 @@ void session(socket_ptr sock)
 
 			boost::system::error_code error;
 			size_t length = sock->read_some(boost::asio::buffer(buf), error);
-			if (error == boost::asio::error::eof)
-				break; // Connection closed cleanly by peer.
-			else if (error)
+			if (error == boost::asio::error::eof) {
+				break; // Connection closed cleanly.
+			}
+			else if (error) {
 				throw boost::system::system_error(error); // Some other error.
-
-//			boost::asio::write(*sock, boost::asio::buffer(buf, length));
-            parcer(buf, length, sock);
+			}
+            serv.handler(buf, length, sock);
 		}
 	}
 	catch (std::exception& e)
 	{
-		std::cerr << "Exception in thread: " << e.what() << "\n";
+		std::cerr << "Exception in thread: " << e.what() << endl;
 	}
 }
 
@@ -42,15 +38,16 @@ int main(int ac, char** av)
 		boost::asio::io_service service;
 		tcp::endpoint ep(tcp::v4(), atoi(av[1]));
 		tcp::acceptor ac(service, ep);
+		Server serv;
 		while (1) {
 			socket_ptr sock(new tcp::socket(service));
 			ac.accept(*sock);
-			boost::thread thrd(boost::bind(session, sock));
+			boost::thread thrd(boost::bind(session, sock, boost::ref(serv)));
 		}
 	}
 	catch (exception &e)
 	{
-		cerr << "Exception: " << e.what() << "\n";
+		cerr << "Exception: " << e.what() << endl;
 	}
 
 	return 0;

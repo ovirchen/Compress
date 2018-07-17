@@ -7,8 +7,10 @@ link_directories(compress ${Boost_LIBRARY_DIRS})
 
 add_executable(compress
         inc/compress.hpp
-        src/main.cpp
-        src/parcer.cpp)
+        inc/Server.hpp
+        src/Server.cpp
+        src/response.cpp
+        src/main.cpp)
 
 target_link_libraries(compress ${Boost_LIBRARIES})
 

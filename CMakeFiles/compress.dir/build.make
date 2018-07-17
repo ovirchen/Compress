@@ -57,9 +57,57 @@ include CMakeFiles/compress.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/compress.dir/flags.make
 
+CMakeFiles/compress.dir/src/Server.cpp.o: CMakeFiles/compress.dir/flags.make
+CMakeFiles/compress.dir/src/Server.cpp.o: src/Server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olga/compress/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/compress.dir/src/Server.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compress.dir/src/Server.cpp.o -c /home/olga/compress/src/Server.cpp
+
+CMakeFiles/compress.dir/src/Server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compress.dir/src/Server.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/compress/src/Server.cpp > CMakeFiles/compress.dir/src/Server.cpp.i
+
+CMakeFiles/compress.dir/src/Server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compress.dir/src/Server.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/compress/src/Server.cpp -o CMakeFiles/compress.dir/src/Server.cpp.s
+
+CMakeFiles/compress.dir/src/Server.cpp.o.requires:
+
+.PHONY : CMakeFiles/compress.dir/src/Server.cpp.o.requires
+
+CMakeFiles/compress.dir/src/Server.cpp.o.provides: CMakeFiles/compress.dir/src/Server.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compress.dir/build.make CMakeFiles/compress.dir/src/Server.cpp.o.provides.build
+.PHONY : CMakeFiles/compress.dir/src/Server.cpp.o.provides
+
+CMakeFiles/compress.dir/src/Server.cpp.o.provides.build: CMakeFiles/compress.dir/src/Server.cpp.o
+
+
+CMakeFiles/compress.dir/src/response.cpp.o: CMakeFiles/compress.dir/flags.make
+CMakeFiles/compress.dir/src/response.cpp.o: src/response.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olga/compress/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/compress.dir/src/response.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compress.dir/src/response.cpp.o -c /home/olga/compress/src/response.cpp
+
+CMakeFiles/compress.dir/src/response.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compress.dir/src/response.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/compress/src/response.cpp > CMakeFiles/compress.dir/src/response.cpp.i
+
+CMakeFiles/compress.dir/src/response.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compress.dir/src/response.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/compress/src/response.cpp -o CMakeFiles/compress.dir/src/response.cpp.s
+
+CMakeFiles/compress.dir/src/response.cpp.o.requires:
+
+.PHONY : CMakeFiles/compress.dir/src/response.cpp.o.requires
+
+CMakeFiles/compress.dir/src/response.cpp.o.provides: CMakeFiles/compress.dir/src/response.cpp.o.requires
+	$(MAKE) -f CMakeFiles/compress.dir/build.make CMakeFiles/compress.dir/src/response.cpp.o.provides.build
+.PHONY : CMakeFiles/compress.dir/src/response.cpp.o.provides
+
+CMakeFiles/compress.dir/src/response.cpp.o.provides.build: CMakeFiles/compress.dir/src/response.cpp.o
+
+
 CMakeFiles/compress.dir/src/main.cpp.o: CMakeFiles/compress.dir/flags.make
 CMakeFiles/compress.dir/src/main.cpp.o: src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olga/compress/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/compress.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olga/compress/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/compress.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compress.dir/src/main.cpp.o -c /home/olga/compress/src/main.cpp
 
 CMakeFiles/compress.dir/src/main.cpp.i: cmake_force
@@ -81,40 +129,18 @@ CMakeFiles/compress.dir/src/main.cpp.o.provides: CMakeFiles/compress.dir/src/mai
 CMakeFiles/compress.dir/src/main.cpp.o.provides.build: CMakeFiles/compress.dir/src/main.cpp.o
 
 
-CMakeFiles/compress.dir/src/parcer.cpp.o: CMakeFiles/compress.dir/flags.make
-CMakeFiles/compress.dir/src/parcer.cpp.o: src/parcer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olga/compress/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/compress.dir/src/parcer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compress.dir/src/parcer.cpp.o -c /home/olga/compress/src/parcer.cpp
-
-CMakeFiles/compress.dir/src/parcer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compress.dir/src/parcer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/compress/src/parcer.cpp > CMakeFiles/compress.dir/src/parcer.cpp.i
-
-CMakeFiles/compress.dir/src/parcer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compress.dir/src/parcer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/compress/src/parcer.cpp -o CMakeFiles/compress.dir/src/parcer.cpp.s
-
-CMakeFiles/compress.dir/src/parcer.cpp.o.requires:
-
-.PHONY : CMakeFiles/compress.dir/src/parcer.cpp.o.requires
-
-CMakeFiles/compress.dir/src/parcer.cpp.o.provides: CMakeFiles/compress.dir/src/parcer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/compress.dir/build.make CMakeFiles/compress.dir/src/parcer.cpp.o.provides.build
-.PHONY : CMakeFiles/compress.dir/src/parcer.cpp.o.provides
-
-CMakeFiles/compress.dir/src/parcer.cpp.o.provides.build: CMakeFiles/compress.dir/src/parcer.cpp.o
-
-
 # Object files for target compress
 compress_OBJECTS = \
-"CMakeFiles/compress.dir/src/main.cpp.o" \
-"CMakeFiles/compress.dir/src/parcer.cpp.o"
+"CMakeFiles/compress.dir/src/Server.cpp.o" \
+"CMakeFiles/compress.dir/src/response.cpp.o" \
+"CMakeFiles/compress.dir/src/main.cpp.o"
 
 # External object files for target compress
 compress_EXTERNAL_OBJECTS =
 
+compress: CMakeFiles/compress.dir/src/Server.cpp.o
+compress: CMakeFiles/compress.dir/src/response.cpp.o
 compress: CMakeFiles/compress.dir/src/main.cpp.o
-compress: CMakeFiles/compress.dir/src/parcer.cpp.o
 compress: CMakeFiles/compress.dir/build.make
 compress: /usr/lib/x86_64-linux-gnu/libboost_system.so
 compress: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -124,7 +150,7 @@ compress: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 compress: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 compress: /usr/lib/x86_64-linux-gnu/libpthread.so
 compress: CMakeFiles/compress.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/olga/compress/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable compress"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/olga/compress/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable compress"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/compress.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -132,8 +158,9 @@ CMakeFiles/compress.dir/build: compress
 
 .PHONY : CMakeFiles/compress.dir/build
 
+CMakeFiles/compress.dir/requires: CMakeFiles/compress.dir/src/Server.cpp.o.requires
+CMakeFiles/compress.dir/requires: CMakeFiles/compress.dir/src/response.cpp.o.requires
 CMakeFiles/compress.dir/requires: CMakeFiles/compress.dir/src/main.cpp.o.requires
-CMakeFiles/compress.dir/requires: CMakeFiles/compress.dir/src/parcer.cpp.o.requires
 
 .PHONY : CMakeFiles/compress.dir/requires
 
