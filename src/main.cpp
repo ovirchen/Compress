@@ -22,7 +22,7 @@ void session(socket_ptr sock, Server &serv)
 	}
 	catch (std::exception& e)
 	{
-		std::cerr << "Exception in thread: " << e.what() << endl;
+		cerr << "Exception in thread: " << e.what() << endl;
 	}
 }
 

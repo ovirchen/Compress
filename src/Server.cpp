@@ -1,6 +1,5 @@
 
 #include "Server.hpp"
-#include <stdlib.h>
 
 Server::Server() {
     _tbs = _tbr = _after_comp = _before_comp = 0;
@@ -102,7 +101,7 @@ int Server::check_invalid_char(char *buf, size_t len, int paylen, socket_ptr soc
 	boost::unique_lock<boost::mutex> locker(mtx, boost::defer_lock);
 	char *response = create_response(8);
 
-	if (len < paylen + 8)
+	if (len != paylen + 8)
 	{
 		response[7] = 0x21; // 33 - Incorrect message length
 		boost::asio::write(*sock, boost::asio::buffer(response, 8));
@@ -153,11 +152,14 @@ int Server::compress(char *buf, size_t len, int paylen, socket_ptr sock)
 
 	boost::unique_lock<boost::mutex> locker(mtx, boost::defer_lock);
 	char *response = create_response(paylen + 6);
+	locker.lock();
+	_before_comp += 6;
+	locker.unlock();
 	int i = 7;
 	int num = 0;
 	int resp = 6;
 	char c = buf[8];
-	while (++i < paylen + 8)
+	while (++i <= paylen + 8)
 	{
 		if (buf[i] == c)
 		{
@@ -180,9 +182,20 @@ int Server::compress(char *buf, size_t len, int paylen, socket_ptr sock)
 			c = buf[i];
 		}
 	}
-	i = (int)strlen(response) - 6;
-	response[4] = i / 16 + 48;
-	response[5] = i % 16 + 48;
+	response[resp] = '\0';
+	i = (int)strlen(response + 6);
+	locker.lock();
+	_after_comp += i;
+	locker.unlock();
+	if (i <= 255)
+	{
+		response[5] = i;
+	}
+	else
+	{
+		response[4] = i / (16 * 16);
+		response[5] = i % (16 * 16);
+	}
 	boost::asio::write(*sock, boost::asio::buffer(response, i + 6));
 	delete response;
 	locker.lock();
@@ -256,7 +269,7 @@ int Server::handler(char *buf, size_t len, socket_ptr sock)
     }
     catch (exception &e)
     {
-        std::cerr << "Exception in handler: " << e.what() << endl;
+        cerr << "Exception in handler: " << e.what() << endl;
     }
 	delete response;
     return 0;
