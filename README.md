@@ -14,7 +14,7 @@ This server defined that 4KiB is maximum payload size, so the BUFFER_SIZE for re
 
 I used Boost library because by description in the Internet this is one of the best.
 
-ADDITIONAL ERRORS
+Additional errors : 
 Status Code  -   Meaning |
   33 - Incorrect message length |
   34 - Incorrect magic value |
