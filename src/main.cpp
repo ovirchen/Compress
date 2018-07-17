@@ -7,7 +7,7 @@ void session(socket_ptr sock, Server &serv)
 	{
 		while (1)
 		{
-			char buf[BUFFER_SIZE];
+			vector<char> buf(BUFFER_SIZE);
 
 			boost::system::error_code error;
 			size_t length = sock->read_some(boost::asio::buffer(buf), error);
@@ -17,7 +17,7 @@ void session(socket_ptr sock, Server &serv)
 			else if (error) {
 				throw boost::system::system_error(error); // Some other error.
 			}
-            serv.handler(buf, length, sock);
+            serv.handler(buf.data(), length, sock);
 		}
 	}
 	catch (std::exception& e)
