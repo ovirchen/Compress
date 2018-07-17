@@ -187,15 +187,8 @@ int Server::compress(char *buf, size_t len, int paylen, socket_ptr sock)
 	locker.lock();
 	_after_comp += i;
 	locker.unlock();
-	if (i <= 255)
-	{
-		response[5] = i;
-	}
-	else
-	{
-		response[4] = i / (16 * 16);
-		response[5] = i % (16 * 16);
-	}
+	response[4] = i / (16 * 16);
+	response[5] = i % (16 * 16);
 	boost::asio::write(*sock, boost::asio::buffer(response, i + 6));
 	delete response;
 	locker.lock();
