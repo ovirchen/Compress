@@ -1,7 +1,7 @@
 # Compress
-Target platform - Ubuntu 18.04
-Language - C++
-Compiler - GCC 7.3.0
+Target platform - Ubuntu 18.04 |
+Language - C++ |
+Compiler - GCC 7.3.0 |
 Using - Boost C++ Libraries
 
   In this code released multi-threaded synchronous TCP server. File Server.hpp has description of class Server, that do all the
@@ -14,11 +14,11 @@ This server defined that 4KiB is maximum payload size, so the BUFFER_SIZE for re
 
 I used Boost library because by description in the Internet this is one of the best.
 
-ADDITIONAL ERRORS
-Status Code  -   Meaning
-  33 - Incorrect message length
-  34 - Incorrect magic value
-  35 - Incorrect payload length
-  36 - <invalid: contains uppercase characters>
-  37 - <invalid: contains numbers>
+Additional errors : 
+Status Code  -   Meaning |
+  33 - Incorrect message length |
+  34 - Incorrect magic value |
+  35 - Incorrect payload length |
+  36 - <invalid: contains uppercase characters> |
+  37 - <invalid: contains numbers> |
   38 - <invalid: contains other characters>
