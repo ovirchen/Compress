@@ -1,2 +1,7 @@
 #!/bin/sh
-cmake CMakeLists.txt && make
+	mkdir -p build
+	cd build
+	cmake ../ && make
+	mv compress ../compress
+	cd ..
+	rm -rf build
