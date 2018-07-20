@@ -6,11 +6,10 @@ find_package(Boost 1.65.1 REQUIRED COMPONENTS system filesystem thread)
 link_directories(compress ${Boost_LIBRARY_DIRS})
 
 add_executable(compress
-        inc/compress.hpp
-        inc/Server.hpp
-        src/Server.cpp
-        src/response.cpp
-        src/main.cpp)
+		inc/compress.hpp
+		inc/Server.hpp
+		src/Server.cpp
+		src/main.cpp)
 
 target_link_libraries(compress ${Boost_LIBRARIES})
 

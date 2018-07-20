@@ -1,2 +1,2 @@
-#!/bin/bash
- ./compress 4000
+#!/bin/sh
+	./compress 4000

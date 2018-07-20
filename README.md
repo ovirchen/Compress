@@ -1,24 +1,30 @@
 # Compress
-Target platform - Ubuntu 18.04 |
-Language - C++ |
-Compiler - GCC 7.3.0 |
+Target platform - Ubuntu 18.04
+Language - C++
+Compiler - GCC 7.3.0
 Using - Boost C++ Libraries
 
-  In this code released multi-threaded synchronous TCP server. File Server.hpp has description of class Server, that do all the
-work with received requests and sents all the responses. Also it has its own exception class, that descride error code in
-server's standard output stream for errors. Release of all Server's functions is in file called Server.cpp. Variables _tbr,
-_tbs is respectively Total Bytes Received and Total Bytes Sent. Another two consider in Compression Ratio. Function reset_stat
-is set all of these variables to zero, but after response of the action _tbs is not zero anymore. So you will never get
-stats response with only zeros. I used mutex for temporarily locking changing these variables.
-This server defined that 4KiB is maximum payload size, so the BUFFER_SIZE for read request is 4097: when it 4097 or more - this is an error, otherwise everything is ok.
+	This project represents multi-threaded synchronous TCP server using a 4000 port.
 
-I used Boost library because by description in the Internet this is one of the best.
+	Every thread is created, reads and treats the request separately using function "session" in "main.cpp".
 
-Additional errors : 
-Status Code  -   Meaning |
-  33 - Incorrect message length |
-  34 - Incorrect magic value |
-  35 - Incorrect payload length |
-  36 - <invalid: contains uppercase characters> |
-  37 - <invalid: contains numbers> |
+	In file "Server.hpp" there is a description of class Server. There are definitions of functions, constructors and
+destructors in file "Server.cpp". The class checks received requests and sents responses. Also it has own exception
+class to describe errors in server's standard output stream. The private variables _tbr,_tbs is respectively Total Bytes
+Received and Total Bytes Sent. Another two take part in calculation of Compression Ratio in function "get_stat".
+Function "reset_stat" sets all of these variables to zero, but after response to this action _tbs isn`t zero anymore. So
+you will never get stats response with only zeros. To prevent synchronous access to the variables I used mutex.
+
+	The server defined 4KiB as the maximum payload size, so the BUFFER_SIZE for reading request is 4097: when 4097 -
+this is an error, otherwise everything is ok.
+
+	I use Boost library because it`s one of the best by description on the Internet.
+
+Additional errors:
+Status Code  -   Meaning
+  33 - Incorrect message length
+  34 - Incorrect magic value
+  35 - Incorrect payload length
+  36 - <invalid: contains uppercase characters>
+  37 - <invalid: contains numbers>
   38 - <invalid: contains other characters>

@@ -11,22 +11,24 @@ void session(socket_ptr sock, Server &serv)
 
 			boost::system::error_code error;
 			size_t length = sock->read_some(boost::asio::buffer(buf), error);
-			if (error == boost::asio::error::eof) {
+			if (error == boost::asio::error::eof)
+			{
 				break; // Connection closed cleanly.
 			}
-			else if (error) {
+			else if (error)
+			{
 				throw boost::system::system_error(error); // Some other error.
 			}
-            serv.handler(buf.data(), length, sock);
+			serv.handler(buf.data(), length, sock);
 		}
 	}
-	catch (std::exception& e)
+	catch (std::exception &e)
 	{
 		cerr << "Exception in thread: " << e.what() << endl;
 	}
 }
 
-int main(int ac, char** av)
+int main(int ac, char **av)
 {
 	try
 	{
@@ -39,7 +41,8 @@ int main(int ac, char** av)
 		tcp::endpoint ep(tcp::v4(), atoi(av[1]));
 		tcp::acceptor ac(service, ep);
 		Server serv;
-		while (1) {
+		while (1)
+		{
 			socket_ptr sock(new tcp::socket(service));
 			ac.accept(*sock);
 			boost::thread thrd(boost::bind(session, sock, boost::ref(serv)));
@@ -49,6 +52,5 @@ int main(int ac, char** av)
 	{
 		cerr << "Exception: " << e.what() << endl;
 	}
-
 	return 0;
 }

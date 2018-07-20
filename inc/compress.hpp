@@ -15,6 +15,4 @@ using boost::asio::ip::tcp;
 
 typedef boost::shared_ptr<tcp::socket> socket_ptr;
 
-char *create_response(int i);
-
 #endif
